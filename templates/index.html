@@ -1,1 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MindGuard - Student Burnout Detection</title>
 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            color: black;
+            padding: 30px;
+            border-radius: 12px;
+            width: 400px;
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            color: #2a5298;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 8px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background: #2a5298;
+            color: white;
+            padding: 12px;
+            width: 95%;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1e3c72;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .low {
+            color: green;
+        }
+
+        .medium {
+            color: orange;
+        }
+
+        .high {
+            color: red;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: gray;
+            margin-bottom: 20px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>MindGuard</h1>
+    <div class="subtitle">AI Student Burnout Detection System</div>
+
+    <form method="POST">
+
+        <input type="number" name="attendance" placeholder="Attendance (%)" required>
+
+        <input type="number" name="marks" placeholder="Average Marks" required>
+
+        <input type="number" name="assignment" placeholder="Assignment Completion (%)" required>
+
+        <input type="number" name="stress" placeholder="Stress Score (1–10)" required>
+
+        <button type="submit">Predict Burnout Risk</button>
+
+    </form>
+
+    {% if result %}
+
+        {% if result == "LOW RISK" %}
+            <div class="result low">{{ result }}</div>
+
+        {% elif result == "MEDIUM RISK" %}
+            <div class="result medium">{{ result }}</div>
+
+        {% else %}
+            <div class="result high">{{ result }}</div>
+
+        {% endif %}
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>
